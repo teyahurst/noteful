@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+
+.Notes-List li{
+    list-style-type: none;
+    border: 3px solid gray;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5%;
+    width: 250px;
+}
+
+
+
+.notes-container{
+    display: flex;
+    flex-direction: column;
+    float: right;
+    
+    
+}

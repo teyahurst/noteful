@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+
+.Folders{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;    
+}
+
+.Folders-List li{
+    list-style-type: none;
+    border: 3px solid gray;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    width: 150px;
+    padding: 5%;
+    
+}
+
+.folder-container{
+    display: inline-block;
+    flex-direction: column;
+    
+    
+    
+}
+
+/* make wrappers to float left/right for folders and notes */ 
