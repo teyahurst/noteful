@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
+
+.NoteContent{
+    display: flex;
+    float: right;
+    border: 3px solid rgb(196, 193, 193);
+}
+
+.NotePageMain__content{
+    margin-left: 2%;
+}

@@ -5,15 +5,18 @@ function NoteSidebar(props){
     console.log(props.folder)
  return(
      <div>
-         <button className='back-btn'>
-             Back
-         </button>
+         
 
          
              <h3 className='NoteSidebar-folder-name'>
                  {props.folder.name}
+                 
+                 <button className='back-btn'>
+                    Back
+                 </button>
              </h3>
          
+             
      </div>
  )
 }

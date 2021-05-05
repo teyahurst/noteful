@@ -14,19 +14,22 @@ function Note(props) {
                 </Link>
             </h2>
 
-        <button className='Note-delete'>
-              remove
-        </button>
+        
         
         <div className='Note__dates'>
         <div className='Note__dates-modified'>
           Modified
-          {' '}
+          <br/>
           <span className='Date'>
             {props.modified}
           </span>
         </div>
       </div>
+
+      <button className='Note-delete'>
+              remove
+      </button>
+
     </div>
     )
 }

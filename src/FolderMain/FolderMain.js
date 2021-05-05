@@ -1,6 +1,7 @@
 import React from 'react';
 import './Folder.css';
 import Note from '../Note/Note';
+import { Link } from 'react-router-dom';
 
 
 /*comment*/
@@ -8,8 +9,19 @@ import Note from '../Note/Note';
 function FolderMain(props){
    
    return(
-        <div className='folderMain'>
+        <section className='folderMain'>
             <ul className='Folder-Notes-List'>
+
+            <div className='FolderMain-btn-container'>
+                <button 
+                    tag={Link}
+                    to='/add-note'
+                    type='button'
+                    className='FolderMain-add-note-btn'>
+                        Add Note
+                    </button>
+                </div>
+                
                 {props.notes.map(note => 
                     <li key={note.id}>
                         <Note 
@@ -19,8 +31,10 @@ function FolderMain(props){
                             />
                     </li>
                     )}
+                    
             </ul>
-        </div>
+            
+        </section>
    )
 }
 

@@ -1,27 +1,71 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
 
-
-.Folders{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1em;    
+.Folders-List{
+    font-family: 'Roboto Condensed', sans-serif;
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    font-weight: bold;
+    margin-left: 50%;
+    
 }
 
 .Folders-List li{
-    list-style-type: none;
-    border: 3px solid gray;
-    font-size: 1em;
-    font-family: 'Open Sans', sans-serif;
-    width: 150px;
-    padding: 5%;
-    
-}
-
-.folder-container{
-    display: inline-block;
+    max-width: 500px;
+    height: 7vh;
+    font-size: 24px;
+    text-align: center;
+    display: flex;
     flex-direction: column;
-    
+    position: relative;
     
     
 }
 
-/* make wrappers to float left/right for folders and notes */ 
+.FolderSidebar-btn-wrapper{
+    margin: 0 0 0 auto;
+    max-width: 20px;
+    
+}
+
+.FolderSidebar-add-folder-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 32px;
+    margin-left: 80px;
+    border-radius: 50%;
+    margin-top: 5%;
+    
+
+}
+
+
+
+.FolderSidebar-add-folder-btn:hover{
+    color: rgb(73, 72, 72);
+    cursor: pointer;
+}
+
+.FolderSidebar-folder-link{
+    
+    font-size: 32px;
+    margin-right: 0%;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: center;
+    border: 3px solid rgb(245, 240, 240);
+    height: 150px;
+    width: 200px;
+    
+}
+
+.FolderSidebar-folder-link:hover{
+    cursor: pointer;
+}
+
+.FolderSidebar-folder-link.active{
+    background-color: rgb(190, 189, 189);
+    
+}

@@ -99,6 +99,9 @@ class App extends React.Component{
             
           }}
         />
+
+        <Route path='/add-folder' component={NoteSidebar}/>
+        <Route path='/add-note' component={NoteSidebar}/>
       </div>
     )
   }
@@ -107,10 +110,10 @@ class App extends React.Component{
     return (
       <div className='App'>
         <Header />
-        <nav>
+        <nav className='App-Nav'>
           {this.renderNav()}
         </nav>
-        <div className='container'>
+        <div className='App-Main'>
           <main>
             {this.renderMain()}
           </main>

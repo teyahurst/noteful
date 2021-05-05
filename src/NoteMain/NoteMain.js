@@ -1,9 +1,10 @@
 import React from 'react';
 import Note from '../Note/Note';
+import './NoteMain.css';
 
 function NoteMain(props){
     return (
-        <div>
+        <div className='NoteContent'>
             <Note 
                 id={props.note.id}
                 name={props.note.name}

@@ -1,18 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Condensed&display=swap');
 
 
-.Header{
-    font-family: 'Roboto Condensed', san-serif;
-    background-color: #303030;
-    color: #f7fae1;
-    height: 150px;
-    font-size: 2em;
-    padding-top: 1%;
-    margin-bottom: 3%;
+.App-Header {
+    font-family: 'Roboto Condensed' san-serif;
+    background-color: #3d1c97;
+    font-size: 3em;
+    margin-bottom: 1%;
+    text-align: center;
+    border: 3px solid #3d1c97;
 }
 
+
 .App-Header a{
-    color: #f7fae1;
-    text-decoration: none
+    color: #dcdadd;
+    text-decoration: none;
+    
+}
+
+.Header-Link:visited{
+    color: #e6e6ec;
+    text-decoration: none;
 }
 
