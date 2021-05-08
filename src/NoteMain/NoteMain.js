@@ -1,23 +1,41 @@
 import React from 'react';
+import ApiContext from '../ApiContext';
 import Note from '../Note/Note';
 import './NoteMain.css';
+import { findNote } from '../varhelp';
 
-function NoteMain(props){
-    return (
+class NoteMain extends React.Component{
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+
+    static contextType = ApiContext;
+
+    render() {
+        const notes  = this.context.notes
+        const noteId = this.props.match.params
+        const note = findNote(notes, noteId.noteId)
+        
+      
+
+        return (
         <div className='NoteContent'>
             <Note 
-                id={props.note.id}
-                name={props.note.name}
-                modified={props.note.modified}
+                id={note.id}
+                name={note.name}
+                modified={note.modified}
             />
             <div className='NotePageMain__content'>
-                {props.note.content.split(/\n \r|\n/).map((para, i) =>
+                {note.content.split(/\n \r|\n/).map((para, i) =>
                 <p key={i}>{para}</p>
                 )}
-            </div>
+            </div>      
         </div>
             
-    )
+        )
+    }
 }
 
 export default NoteMain;

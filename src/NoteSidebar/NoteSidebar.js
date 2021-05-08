@@ -1,24 +1,45 @@
 import React from 'react';
+import ApiContext from '../ApiContext';
 import './NoteSidebar.css';
+import { findFolder, findNote } from '../varhelp';
 
-function NoteSidebar(props){
-    console.log(props.folder)
- return(
+class NoteSidebar extends React.Component{
+    static defaultProps = {
+        history: {
+            goBack: () => { }
+        },
+        match: {
+            params: {}
+        }
+    }
+
+    static contextType = ApiContext;
+
+
+    render(){
+        const notes = this.context.notes
+        const folders = this.context.folders
+        const noteId = this.props.match.params.noteId
+        const note = findNote(notes, noteId) 
+        const folder = findFolder(folders, note.folderId)
+        
+        
+
+    return(
      <div>
-         
-
-         
+         {folder && (
              <h3 className='NoteSidebar-folder-name'>
-                 {props.folder.name}
+                 {folder.name}
+             </h3>
+         )}
                  
                  <button className='back-btn'>
                     Back
                  </button>
-             </h3>
          
-             
      </div>
- )
+        )
+    }    
 }
 
 export default NoteSidebar;

@@ -1,14 +1,21 @@
 import React from 'react';
 import './FolderSidebar.css';
 import { NavLink, Link } from 'react-router-dom';
+import ApiContext from '../ApiContext';
 
 
-function FolderSidebar(props){
+
+class FolderSidebar extends React.Component {
+    static contextType = ApiContext;
+
+    render() {
+        const { folders } = this.context
+
     return (
         
         <div className='folder-container'>
             <ul className='Folders-List'>
-                {props.folders.map(folder => 
+                {folders.map(folder => 
                     <li key={folder.id}>
                         <NavLink className='FolderSidebar-folder-link'
                                  to={`/folder/${folder.id}`}
@@ -29,11 +36,9 @@ function FolderSidebar(props){
                     </button>
             </div>
         </div>
-    )
+        )
+    }                
 }
 
-FolderSidebar.defaultProps = {
-    folders: []
-}
 
 export default FolderSidebar;

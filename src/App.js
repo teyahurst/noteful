@@ -4,100 +4,82 @@ import './App.css';
 import Header from './Header';
 import FolderMain from './FolderMain/FolderMain';
 import FolderSidebar from './FolderSidebar/FolderSidebar';
-import Store from './dummyStore';
 import NoteMain from './NoteMain/NoteMain';
 import NoteSidebar from './NoteSidebar/NoteSidebar';
 
 import { Route } from 'react-router-dom';
-
-
-const getNotesForFolder = (notes=[], folderId) => (
-  (!folderId)
-  ? notes
-  : notes.filter(note => note.folderId === folderId)
-)
+import ApiContext from './ApiContext';
 
 
 
 
 
 class App extends React.Component{
-  constructor(props){
-    super(props);
-
-    this.state = {
+  state = {
       notes: [],
       folders: []
     }
+  
+
+  componentDidMount() {
+    Promise.all([
+      fetch(`http://localhost:9090/notes`),
+      fetch(`http://localhost:9090/folders`)
+    ])
+    .then(([notesResponse, foldersResponse]) => {
+      if(!notesResponse.ok)
+        return notesResponse.json().then(e => Promise.reject(e));
+      if(!foldersResponse.ok)
+        return foldersResponse.json().then(e => Promise.reject(e));
+
+      return Promise.all([notesResponse.json(), foldersResponse.json()]);
+    })
+    .then(([notes, folders]) => {
+      this.setState({notes, folders});
+    })
+    .catch(err => {
+      console.error({err})
+    });
   }
 
-  componentDidMount(){
-    this.setState(Store)
-  }
+  handleDeleteNote = noteId => {
+    this.setState({
+        notes: this.state.notes.filter(note => note.id !== noteId)
+    });
+};
 
   renderNav(){
-    const { notes, folders } = this.state;
+    
     return(
       <div>
         {['/', '/folder/:folderId'].map(path => (
           <Route 
             exact key={path}
             path={path}
-            render={routeProps => (
-              <FolderSidebar 
-                folders={folders}
-                notes={notes}
-                {...routeProps}
-              />
-              )}
+            component={FolderSidebar}
           />
         ))}
-        <Route 
-          path='/note/:noteId'
-          render={routeProps => {
-            const {noteId} = routeProps.match.params;
-            
-            
-            const findNote = (notes=[], noteId) => notes.find(note => note.id === noteId);
-            const findFolder = (folders=[], folderId) => folders.find(folder => folder.id === folderId);
-            const note = findNote(notes, noteId) || {};
-            const folder = findFolder(folders, note.folderId);
-            
-            return <NoteSidebar {...routeProps} folder={folder}/>
-            }}
-          />
+        <Route path='/note/:noteId' component={NoteSidebar}/>
       </div>
     )
   }
 
 
   renderMain(){
-    const { notes } = this.state;
+    
     return(
       <div>
         {['/', '/folder/:folderId'].map(path => (
           <Route 
             exact key={path}
             path={path}
-            render={routeProps => {
-              const {folderId} = routeProps.match.params;
-              return (
-                <FolderMain 
-                  notes={getNotesForFolder(notes, folderId)}
-                  />
-              )
-            }}
+            component={FolderMain}
           />
         ))}
 
         <Route 
           path='/note/:noteId'
-          render={routeProps => {
-            const {noteId} = routeProps.match.params;
-            const findNote = (notes=[], noteId) => notes.find(note => note.id === noteId);
-            return <NoteMain {...routeProps} note={findNote(notes, noteId)}/>
-            
-          }}
+          component={NoteMain}
         />
 
         <Route path='/add-folder' component={NoteSidebar}/>
@@ -107,19 +89,27 @@ class App extends React.Component{
   }
 
   render(){
+    const value = {
+      notes: this.state.notes,
+      folders: this.state.folders,
+      deleteNote: this.handleDeleteNote
+    }
+
     return (
-      <div className='App'>
-        <Header />
-        <nav className='App-Nav'>
-          {this.renderNav()}
-        </nav>
-        <div className='App-Main'>
-          <main>
-            {this.renderMain()}
-          </main>
-          
+      <ApiContext.Provider value={value}>
+        <div className='App'>
+          <Header />
+          <nav className='App-Nav'>
+            {this.renderNav()}
+          </nav>
+          <div className='App-Main'>
+            <main>
+              {this.renderMain()}
+            </main>
+            
+          </div>
         </div>
-      </div>
+      </ApiContext.Provider>
     )
   }
 }

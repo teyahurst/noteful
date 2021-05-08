@@ -2,13 +2,27 @@ import React from 'react';
 import './Folder.css';
 import Note from '../Note/Note';
 import { Link } from 'react-router-dom';
+import ApiContext from '../ApiContext';
+import { getNotesForFolder } from '../varhelp';
 
 
 /*comment*/
 
-function FolderMain(props){
-   
-   return(
+class FolderMain extends React.Component{
+    
+    static defaultProps = {
+        match: {
+            params: {}
+        }
+    }
+    static contextType = ApiContext;
+
+    render() {
+        const { folderId } = this.props.match.params
+        const { notes } = this.context
+        const notesForFolder = getNotesForFolder(notes, folderId)
+
+    return(
         <section className='folderMain'>
             <ul className='Folder-Notes-List'>
 
@@ -22,7 +36,7 @@ function FolderMain(props){
                     </button>
                 </div>
                 
-                {props.notes.map(note => 
+                {notesForFolder.map(note => 
                     <li key={note.id}>
                         <Note 
                             id={note.id}
@@ -35,7 +49,8 @@ function FolderMain(props){
             </ul>
             
         </section>
-   )
+        )
+    }                
 }
 
 export default FolderMain;
