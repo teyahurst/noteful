@@ -28,6 +28,7 @@ class Note extends React.Component{
       return response.json()
     })
     .then(() => {
+      this.context.onDeleteNote(noteId)
       this.props.onDeleteNote(noteId)
     })
     .catch(error => {

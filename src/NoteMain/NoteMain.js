@@ -13,6 +13,10 @@ class NoteMain extends React.Component{
 
     static contextType = ApiContext;
 
+    handleDeleteNote = noteId => {
+        this.props.history.push(`/`)
+    }
+
     render() {
         const notes  = this.context.notes
         const noteId = this.props.match.params

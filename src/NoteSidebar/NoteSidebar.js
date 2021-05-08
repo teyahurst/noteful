@@ -33,7 +33,10 @@ class NoteSidebar extends React.Component{
              </h3>
          )}
                  
-                 <button className='back-btn'>
+                 <button className='back-btn'
+                         tag='button'
+                         role='link'
+                         onClick={() => this.props.history.goBack()}>
                     Back
                  </button>
          
