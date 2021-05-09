@@ -41,7 +41,6 @@ class AddFolder extends React.Component {
             return response.json()
         })
         .then(folder => {
-            console.log('ts', this.context)
             this.context.addFolder(folder)
             this.props.history.push(`/folder/${folder.id}`)
         })
