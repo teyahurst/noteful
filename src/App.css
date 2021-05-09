@@ -6,17 +6,33 @@
   background-color: rgb(219, 216, 216);
 }
 
+
+
+.group{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.App-Header a {
+  color: white;
+}
+
+
 .App-Nav{
-  display: inline-flex;
-  height: 20vh;
+  flex: .5;
+  flex-direction: column;
 
 }
 
 
 .App-Main{
-  display: inline-flex;
-  position: relative;
-  
+  flex: 1;
+  flex-direction:column;
+  margin-left: 2%;
+  margin-right: 2%;
+ 
+
 }
 
 

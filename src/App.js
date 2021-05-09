@@ -7,6 +7,8 @@ import FolderSidebar from './FolderSidebar/FolderSidebar';
 import NoteMain from './NoteMain/NoteMain';
 import NoteSidebar from './NoteSidebar/NoteSidebar';
 
+import AddFolder from './AddFolder/AddFolder';
+
 import { Route } from 'react-router-dom';
 import ApiContext from './ApiContext';
 
@@ -42,6 +44,15 @@ class App extends React.Component{
     });
   }
 
+  handleAddfolder = folder => {
+    this.setState({
+      folders: [
+        ...this.state.folders,
+        folder
+      ]
+    })
+  }
+
   handleDeleteNote = noteId => {
     this.setState({
         notes: this.state.notes.filter(note => note.id !== noteId)
@@ -60,7 +71,7 @@ class App extends React.Component{
           />
         ))}
         <Route path='/note/:noteId' component={NoteSidebar}/>
-        <Route path='/add-folder' component={NoteSidebar}/>
+        <Route path='/add-folder' component={AddFolder}/>
         <Route path='/add-note' component={NoteSidebar}/>
       </div>
     );
@@ -96,14 +107,16 @@ class App extends React.Component{
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <Header />
-          <nav className='App-Nav'>
-            {this.renderNav()}
-          </nav>
-            <main className='App-Main'>
-              {this.renderMain()}
-            </main>
-        </div>
+            <Header />
+            <div className='group'>
+            <nav className='App-Nav'>
+              {this.renderNav()}
+            </nav>
+              <main className='App-Main'>
+                {this.renderMain()}
+              </main>
+            </div>
+          </div>
       </ApiContext.Provider>
     )
   }

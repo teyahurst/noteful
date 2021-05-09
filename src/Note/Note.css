@@ -4,19 +4,18 @@
     font-family: 'Open Sans', sans-serif;
     height: 88px;
     margin-bottom: 8px;
-    max-width: 500px;
+    width: 100%;
     padding: 8px 0 8px 8px;
-    position: relative;
 }
 
 .Note-delete{
-    display: flex;
-    margin-top: 5%;
+    
     font-family: 'Roboto Condensed', sans-serif;
-    width: 55px;
-    height: 24px;
-    font-size: 14px;
+    width: 75px;
+    height: 30px;
+    font-size: 18px;
     font-weight: bold;
+    float: right;
 }
 
 
@@ -27,14 +26,23 @@
 
 }
 
-.Note-title{
+.Note-title a{
+    text-decoration: none;
+}
+
+.Note-title {
     font-size: 20px;
     margin: 0;
     max-width: 80%;
     min-height: 24px;
+    
 
 }
 
 .Note-title a:hover{
     font-weight: bold;
+}
+
+.Note-title a:visited{
+    color: #3d1c97
 }

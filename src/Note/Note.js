@@ -47,23 +47,24 @@ class Note extends React.Component{
                 <Link to={`/note/${id}`}>
                     {name}
                 </Link>
+                
             </h2>
 
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
             Modified
-            <br/>
-              <span className='Date'>
                 {modified}
-              </span>
-          
-
-          <button className='Note-delete'
+                <br/>
+                <button className='Note-delete'
                     type='button'
                     onClick={this.handleClickDelete}
               >
-              remove
+              Delete
             </button>
+              
+          
+
+          
             </div>
         </div>
     </div>

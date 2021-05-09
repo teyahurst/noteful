@@ -24,9 +24,6 @@ class FolderSidebar extends React.Component {
                         </NavLink>
                     </li>
                 )}
-            </ul>
-
-            <div className='FolderSidebar-btn-wrapper'>
                 <button 
                     tag={Link}
                     to='/add-folder'
@@ -34,8 +31,12 @@ class FolderSidebar extends React.Component {
                     className='FolderSidebar-add-folder-btn'>
                         +
                     </button>
+            </ul>
+
+            
+                
             </div>
-        </div>
+        
         )
     }                
 }

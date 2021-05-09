@@ -26,19 +26,20 @@ class NoteSidebar extends React.Component{
 
     return(
      <div>
-         <button className='back-btn'
-                         type='button'
-                         onClick={() => this.props.history.goBack()}>
-                    Back
-                 </button>
+         
                  
          {folder && (
              <h3 className='NoteSidebar-folder-name'>
                  {folder.name}
+                 <button className='back-btn'
+                         type='button'
+                         onClick={() => this.props.history.goBack()}>
+                    Back
+                 </button> 
              </h3>
          )}
                  
-                 
+                     
          
      </div>
         )

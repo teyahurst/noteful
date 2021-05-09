@@ -24,10 +24,7 @@ class FolderMain extends React.Component{
 
     return(
         <section className='folderMain'>
-            
-            <ul className='Folder-Notes-List'>
-
-                <div className='FolderMain-btn-container'>
+            <div className='FolderMain-btn-container'>
                     <button 
                         tag={Link}
                         to='/add-note'
@@ -36,6 +33,8 @@ class FolderMain extends React.Component{
                             Add Note
                         </button>
                     </div>
+
+            <ul className='Folder-Notes-List'>
 
                 {notesForFolder.map(note => 
                     <li key={note.id}>

@@ -2,7 +2,7 @@
 
 .NoteContent{
     display: flex;
-    float: right;
+    
     border: 3px solid rgb(196, 193, 193);
 }
 
