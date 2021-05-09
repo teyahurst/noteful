@@ -9,7 +9,7 @@ class FolderSidebar extends React.Component {
     static contextType = ApiContext;
 
     render() {
-        const { folders } = this.context
+        const { folders=[] } = this.context
 
     return (
         
@@ -22,8 +22,8 @@ class FolderSidebar extends React.Component {
                                 >
                             {folder.name}
                         </NavLink>
-                    </li>)}
-                
+                    </li>
+                )}
             </ul>
 
             <div className='FolderSidebar-btn-wrapper'>

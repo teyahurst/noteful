@@ -18,9 +18,9 @@ class NoteMain extends React.Component{
     }
 
     render() {
-        const notes  = this.context.notes
-        const noteId = this.props.match.params
-        const note = findNote(notes, noteId.noteId)
+        const { notes=[] } = this.context
+        const { noteId } = this.props.match.params
+        const note = findNote(notes, noteId) || { content: '' }
         
       
 
@@ -30,6 +30,8 @@ class NoteMain extends React.Component{
                 id={note.id}
                 name={note.name}
                 modified={note.modified}
+                onDeleteNote={this.handleDeleteNote}
+                
             />
             <div className='NotePageMain__content'>
                 {note.content.split(/\n \r|\n/).map((para, i) =>

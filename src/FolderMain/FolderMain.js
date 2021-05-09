@@ -6,7 +6,7 @@ import ApiContext from '../ApiContext';
 import { getNotesForFolder } from '../varhelp';
 
 
-/*comment*/
+
 
 class FolderMain extends React.Component{
     
@@ -19,23 +19,24 @@ class FolderMain extends React.Component{
 
     render() {
         const { folderId } = this.props.match.params
-        const { notes } = this.context
+        const { notes=[] } = this.context
         const notesForFolder = getNotesForFolder(notes, folderId)
 
     return(
         <section className='folderMain'>
+            
             <ul className='Folder-Notes-List'>
 
-            <div className='FolderMain-btn-container'>
-                <button 
-                    tag={Link}
-                    to='/add-note'
-                    type='button'
-                    className='FolderMain-add-note-btn'>
-                        Add Note
-                    </button>
-                </div>
-                
+                <div className='FolderMain-btn-container'>
+                    <button 
+                        tag={Link}
+                        to='/add-note'
+                        type='button'
+                        className='FolderMain-add-note-btn'>
+                            Add Note
+                        </button>
+                    </div>
+
                 {notesForFolder.map(note => 
                     <li key={note.id}>
                         <Note 

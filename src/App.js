@@ -60,12 +60,14 @@ class App extends React.Component{
           />
         ))}
         <Route path='/note/:noteId' component={NoteSidebar}/>
+        <Route path='/add-folder' component={NoteSidebar}/>
+        <Route path='/add-note' component={NoteSidebar}/>
       </div>
-    )
+    );
   }
 
 
-  renderMain(){
+  renderMain() {
     
     return(
       <div>
@@ -77,13 +79,9 @@ class App extends React.Component{
           />
         ))}
 
-        <Route 
-          path='/note/:noteId'
-          component={NoteMain}
-        />
+        <Route path='/note/:noteId' component={NoteMain}/>
 
-        <Route path='/add-folder' component={NoteSidebar}/>
-        <Route path='/add-note' component={NoteSidebar}/>
+        
       </div>
     )
   }
@@ -102,12 +100,9 @@ class App extends React.Component{
           <nav className='App-Nav'>
             {this.renderNav()}
           </nav>
-          <div className='App-Main'>
-            <main>
+            <main className='App-Main'>
               {this.renderMain()}
             </main>
-            
-          </div>
         </div>
       </ApiContext.Provider>
     )

@@ -7,7 +7,7 @@ import ApiContext from '../ApiContext';
 
 
 class Note extends React.Component{
-  static defaultProps = {
+  static defaultProps ={
     onDeleteNote: () => {},
   }
   static contextType = ApiContext;
@@ -28,7 +28,7 @@ class Note extends React.Component{
       return response.json()
     })
     .then(() => {
-      this.context.onDeleteNote(noteId)
+      this.context.deleteNote(noteId)
       this.props.onDeleteNote(noteId)
     })
     .catch(error => {
@@ -49,24 +49,23 @@ class Note extends React.Component{
                 </Link>
             </h2>
 
-        
-        
         <div className='Note__dates'>
-        <div className='Note__dates-modified'>
-          Modified
-          <br/>
-          <span className='Date'>
-            {modified}
-          </span>
-        </div>
-      </div>
+          <div className='Note__dates-modified'>
+            Modified
+            <br/>
+              <span className='Date'>
+                {modified}
+              </span>
+          
 
-      <button className='Note-delete'
-              type='button'
-              onClick={this.handleClickDelete}>
+          <button className='Note-delete'
+                    type='button'
+                    onClick={this.handleClickDelete}
+              >
               remove
-      </button>
-
+            </button>
+            </div>
+        </div>
     </div>
     )
   }
