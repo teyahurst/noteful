@@ -1,12 +1,21 @@
 import React from 'react';
 import NotefulForm from '../NotefulForm/NotefulForm';
 import ApiContext from '../ApiContext';
+import './AddFolder.css';
+
+
+
+
+
 
 
 class AddFolder extends React.Component {
     static defaultProps = {
         history: {
-            push: () => {}
+            goBack: () => { }
+        },
+        match: {
+            params: {}
         }
     }
 
@@ -18,6 +27,29 @@ class AddFolder extends React.Component {
         const folder = {
             name: e.target['folder-name'].value
         }
+
+        fetch(`http://localhost:9090/folders`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(folder)
+        })
+        .then(response => {
+            if(!response.ok)
+                return response.json().then(e => Promise.reject(e))
+            return response.json()
+        })
+        .then(folder => {
+            console.log('ts', this.context)
+            this.context.addFolder(folder)
+            this.props.history.push(`/folder/${folder.id}`)
+        })
+        .catch(error => {
+            console.error('add folder ', { error })
+        })
+
+        
     }
 
     render() {
@@ -26,14 +58,20 @@ class AddFolder extends React.Component {
                 <h2>Create a Folder</h2>
                 <NotefulForm onSubmit={this.handleSubmit}>
                     <div className='field'>
-                        <label htmlFor='folder-name-input'>
+                        <label htmlFor='folder-name-input' id='name'>
                             Name
                         </label>
-                        <input type='text' id='folder-name-input' name='folder-name' required/>
+                        <input type='text' className='folder-name-input' name='folder-name' required/>
                     </div>
                     <div className='buttons'>
-                        <button type='submit'>
+                        <button type='submit' className='add-folder'>
                             Add Folder
+                        </button>
+                            
+                        <button className='cancel-btn'
+                         type='button'
+                         onClick={() => this.props.history.goBack()}>
+                            Cancel
                         </button>
                     </div>
                 </NotefulForm>

@@ -26,11 +26,11 @@ class FolderMain extends React.Component{
         <section className='folderMain'>
             <div className='FolderMain-btn-container'>
                     <button 
-                        tag={Link}
                         to='/add-note'
                         type='button'
-                        className='FolderMain-add-note-btn'>
-                            Add Note
+                        className='FolderMain-add-note-btn'
+                        >
+                            <Link to={'/add-note'}>Add Note</Link>
                         </button>
                     </div>
 

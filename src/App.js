@@ -8,11 +8,12 @@ import NoteMain from './NoteMain/NoteMain';
 import NoteSidebar from './NoteSidebar/NoteSidebar';
 
 import AddFolder from './AddFolder/AddFolder';
+import AddNote from './AddNote/AddNote';
 
 import { Route } from 'react-router-dom';
 import ApiContext from './ApiContext';
 
-
+import ErrorMessage from './ErrorBoundaries/ErrorMessage';
 
 
 
@@ -53,6 +54,15 @@ class App extends React.Component{
     })
   }
 
+  handleAddNote = note => {
+    this.setState({
+      notes: [
+        ...this.state.notes,
+        note
+      ]
+    })
+  }
+
   handleDeleteNote = noteId => {
     this.setState({
         notes: this.state.notes.filter(note => note.id !== noteId)
@@ -72,7 +82,7 @@ class App extends React.Component{
         ))}
         <Route path='/note/:noteId' component={NoteSidebar}/>
         <Route path='/add-folder' component={AddFolder}/>
-        <Route path='/add-note' component={NoteSidebar}/>
+        <Route path='/add-note' component={AddNote}/>
       </div>
     );
   }
@@ -101,12 +111,15 @@ class App extends React.Component{
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.handleDeleteNote
+      deleteNote: this.handleDeleteNote,
+      addFolder: this.handleAddfolder,
+      addNote: this.handleAddNote,
     }
 
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
+          <ErrorMessage>
             <Header />
             <div className='group'>
             <nav className='App-Nav'>
@@ -116,6 +129,7 @@ class App extends React.Component{
                 {this.renderMain()}
               </main>
             </div>
+            </ErrorMessage>
           </div>
       </ApiContext.Provider>
     )

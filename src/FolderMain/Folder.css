@@ -46,6 +46,10 @@
 
 }
 
+.FolderMain-add-note-btn a{
+    text-decoration: none;
+}
+
 .FolderMain-add-note-btn:hover{
     color: rgb(87, 84, 84);
 }

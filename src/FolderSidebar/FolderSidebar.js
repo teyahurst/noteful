@@ -5,6 +5,7 @@ import ApiContext from '../ApiContext';
 
 
 
+
 class FolderSidebar extends React.Component {
     static contextType = ApiContext;
 
@@ -25,11 +26,11 @@ class FolderSidebar extends React.Component {
                     </li>
                 )}
                 <button 
-                    tag={Link}
                     to='/add-folder'
                     type='button'
-                    className='FolderSidebar-add-folder-btn'>
-                        +
+                    className='FolderSidebar-add-folder-btn'
+                    >
+                        <Link to='/add-folder'>+</Link>
                     </button>
             </ul>
 
@@ -40,6 +41,7 @@ class FolderSidebar extends React.Component {
         )
     }                
 }
+
 
 
 export default FolderSidebar;

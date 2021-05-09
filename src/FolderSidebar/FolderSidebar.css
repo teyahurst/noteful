@@ -19,9 +19,12 @@
     border-radius: 50%;
     margin-top: 5%;
     margin-left: 75%;
-
+    
 }
 
+.FolderSidebar-add-folder-btn a{
+    text-decoration: none;
+}
 
 
 .FolderSidebar-add-folder-btn:hover{
@@ -51,3 +54,4 @@
     background-color: rgb(190, 189, 189);
     
 }
+

@@ -2,6 +2,7 @@ import React from 'react';
 import './Note.css';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext';
+import PropTypes from 'prop-types';
 
 
 
@@ -71,5 +72,11 @@ class Note extends React.Component{
     )
   }
 }
+
+Note.propTypes = {
+  modified: PropTypes.string,
+  name: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default Note;
