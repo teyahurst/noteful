@@ -4,6 +4,7 @@ import Note from '../Note/Note';
 import { Link } from 'react-router-dom';
 import ApiContext from '../ApiContext';
 import { getNotesForFolder } from '../varhelp';
+import PropTypes from 'prop-types';
 
 
 
@@ -25,13 +26,13 @@ class FolderMain extends React.Component{
     return(
         <section className='folderMain'>
             <div className='FolderMain-btn-container'>
-                    <button 
-                        to='/add-note'
+            <Link to={'/add-note'}>
+                <button 
                         type='button'
-                        className='FolderMain-add-note-btn'
-                        >
-                            <Link to={'/add-note'}>Add Note</Link>
+                        className='FolderMain-add-note-btn'>
+                            Add Note
                         </button>
+                        </Link>
                     </div>
 
             <ul className='Folder-Notes-List'>
@@ -51,6 +52,11 @@ class FolderMain extends React.Component{
         </section>
         )
     }                
+}
+
+FolderMain.propTypes = {
+    match: PropTypes.object,
+
 }
 
 export default FolderMain;

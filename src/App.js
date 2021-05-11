@@ -73,6 +73,7 @@ class App extends React.Component{
     
     return(
       <div>
+        <ErrorMessage>
         {['/', '/folder/:folderId'].map(path => (
           <Route 
             exact key={path}
@@ -83,6 +84,7 @@ class App extends React.Component{
         <Route path='/note/:noteId' component={NoteSidebar}/>
         <Route path='/add-folder' component={AddFolder}/>
         <Route path='/add-note' component={AddNote}/>
+        </ErrorMessage>
       </div>
     );
   }
@@ -92,6 +94,7 @@ class App extends React.Component{
     
     return(
       <div>
+        <ErrorMessage>
         {['/', '/folder/:folderId'].map(path => (
           <Route 
             exact key={path}
@@ -102,7 +105,7 @@ class App extends React.Component{
 
         <Route path='/note/:noteId' component={NoteMain}/>
 
-        
+        </ErrorMessage>
       </div>
     )
   }
@@ -119,7 +122,7 @@ class App extends React.Component{
     return (
       <ApiContext.Provider value={value}>
         <div className='App'>
-          <ErrorMessage>
+          
             <Header />
             <div className='group'>
             <nav className='App-Nav'>
@@ -129,7 +132,7 @@ class App extends React.Component{
                 {this.renderMain()}
               </main>
             </div>
-            </ErrorMessage>
+            
           </div>
       </ApiContext.Provider>
     )

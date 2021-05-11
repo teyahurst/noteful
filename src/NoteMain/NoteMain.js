@@ -3,6 +3,7 @@ import ApiContext from '../ApiContext';
 import Note from '../Note/Note';
 import './NoteMain.css';
 import { findNote } from '../varhelp';
+import PropTypes from 'prop-types';
 
 class NoteMain extends React.Component{
     static defaultProps = {
@@ -42,6 +43,10 @@ class NoteMain extends React.Component{
             
         )
     }
+}
+
+NoteMain.propTypes = {
+    match: PropTypes.object,
 }
 
 export default NoteMain;

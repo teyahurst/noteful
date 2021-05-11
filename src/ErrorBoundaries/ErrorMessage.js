@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 class ErrorMessage extends React.Component{
     constructor(props){
@@ -20,6 +21,10 @@ class ErrorMessage extends React.Component{
         }
         return this.props.children;
     }
+}
+
+ErrorMessage.propTypes = {
+    hasError: PropTypes.bool
 }
 
 export default ErrorMessage;

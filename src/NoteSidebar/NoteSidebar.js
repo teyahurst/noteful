@@ -2,6 +2,7 @@ import React from 'react';
 import ApiContext from '../ApiContext';
 import './NoteSidebar.css';
 import { findNote, findFolder } from '../varhelp';
+import PropTypes from 'prop-types';
 
 class NoteSidebar extends React.Component{
     static defaultProps = {
@@ -44,6 +45,11 @@ class NoteSidebar extends React.Component{
      </div>
         )
     }    
+}
+
+NoteSidebar.propTypes = {
+    match: PropTypes.object,
+    history: PropTypes.object
 }
 
 export default NoteSidebar;

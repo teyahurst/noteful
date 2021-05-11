@@ -3,6 +3,7 @@ import NotefulForm from '../NotefulForm/NotefulForm';
 import ApiContext from '../ApiContext';
 import './AddNote.css';
 import NoteValidationError from './NoteValidationError';
+import PropTypes from 'prop-types';
 
 
 class AddNote extends React.Component{
@@ -128,6 +129,13 @@ class AddNote extends React.Component{
             </section>
         )
     }
+}
+
+AddNote.propTypes = {
+    nameValid: PropTypes.bool,
+    name: PropTypes.string,
+    validationMessages: PropTypes.object,
+    history: PropTypes.object,
 }
 
 export default AddNote;

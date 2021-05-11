@@ -2,6 +2,7 @@ import React from 'react';
 import NotefulForm from '../NotefulForm/NotefulForm';
 import ApiContext from '../ApiContext';
 import './AddFolder.css';
+import PropTypes from 'prop-types';
 
 
 
@@ -77,6 +78,11 @@ class AddFolder extends React.Component {
             </section>
         )
     }
+}
+
+AddFolder.propTypes = {
+    history: PropTypes.object,
+    match: PropTypes.object,
 }
 
 export default AddFolder;

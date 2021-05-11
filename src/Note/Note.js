@@ -42,6 +42,7 @@ class Note extends React.Component{
 
   render() {
     const { name, id, modified } = this.props
+    const date = new Date(modified).toDateString();
     return (
         <div className = 'Note'>
             <h2 className='Note-title'>
@@ -53,8 +54,8 @@ class Note extends React.Component{
 
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
-            Modified
-                {modified}
+            Modified: {' '}
+                {date}
                 <br/>
                 <button className='Note-delete'
                     type='button'
@@ -77,6 +78,7 @@ Note.propTypes = {
   modified: PropTypes.string,
   name: PropTypes.string,
   id: PropTypes.string,
+  onDeleteNote: PropTypes.func,
 };
 
 export default Note;
