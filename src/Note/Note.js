@@ -47,7 +47,7 @@ class Note extends React.Component{
     const { name, id, modified } = this.props
     const date = new Date(modified).toDateString();
 
-    console.log(this.props)
+    
 
     return (
         <div className = 'Note'>
@@ -61,7 +61,7 @@ class Note extends React.Component{
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
             Modified: {' '}
-                {modified}
+                {date}
                 <br/>
                 <button className='Note-delete'
                     type='button'
