@@ -42,7 +42,7 @@ class FolderMain extends React.Component{
                         <Note 
                             id={note.id}
                             name={note.note_name}
-                            modified={note.modified}
+                            modified={note.modified_date}
                             />
                     </li>
                     )}
