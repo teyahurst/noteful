@@ -41,7 +41,7 @@ class FolderMain extends React.Component{
                     <li key={note.id}>
                         <Note 
                             id={note.id}
-                            name={note.name}
+                            name={note.note_name}
                             modified={note.modified}
                             />
                     </li>

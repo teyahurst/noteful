@@ -26,8 +26,8 @@ class App extends React.Component{
 
   componentDidMount() {
     Promise.all([
-      fetch(`http://localhost:9090/notes`),
-      fetch(`http://localhost:9090/folders`)
+      fetch(`https://remembrance-parliament-57350.herokuapp.com/api/notes`),
+      fetch(`https://remembrance-parliament-57350.herokuapp.com/api/folders`)
     ])
     .then(([notesResponse, foldersResponse]) => {
       if(!notesResponse.ok)
@@ -45,12 +45,12 @@ class App extends React.Component{
     });
   }
 
-  handleAddfolder = folder => {
+  handleAddfolder = addedFolder => {
+    const newFolders = this.state.folders
+    newFolders.push(addedFolder)
+
     this.setState({
-      folders: [
-        ...this.state.folders,
-        folder
-      ]
+      folders:newFolders
     })
   }
 

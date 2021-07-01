@@ -21,7 +21,7 @@ class FolderSidebar extends React.Component {
                         <NavLink className='FolderSidebar-folder-link'
                                  to={`/folder/${folder.id}`}
                                 >
-                            {folder.name}
+                            {folder.folder_name}
                         </NavLink>
                     </li>
                 )}

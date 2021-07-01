@@ -17,7 +17,7 @@ class Note extends React.Component{
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`https://remembrance-parliament-57350.herokuapp.com/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -77,7 +77,7 @@ class Note extends React.Component{
 Note.propTypes = {
   modified: PropTypes.string,
   name: PropTypes.string,
-  id: PropTypes.string,
+  id: PropTypes.number,
   onDeleteNote: PropTypes.func,
 };
 

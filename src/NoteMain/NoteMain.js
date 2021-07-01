@@ -29,7 +29,7 @@ class NoteMain extends React.Component{
         <div className='NoteContent'>
             <Note 
                 id={note.id}
-                name={note.name}
+                name={note.note_name}
                 modified={note.modified}
                 onDeleteNote={this.handleDeleteNote}
                 

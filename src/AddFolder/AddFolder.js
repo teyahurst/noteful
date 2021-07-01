@@ -26,10 +26,10 @@ class AddFolder extends React.Component {
     handleSubmit = e => {
         e.preventDefault();
         const folder = {
-            name: e.target['folder-name'].value
+            folder_name: e.target['folder-name'].value
         }
 
-        fetch(`http://localhost:9090/folders`, {
+        fetch(`https://remembrance-parliament-57350.herokuapp.com/api/folders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -43,11 +43,12 @@ class AddFolder extends React.Component {
         })
         .then(folder => {
             this.context.addFolder(folder)
-            this.props.history.push(`/folder/${folder.id}`)
+            
         })
         .catch(error => {
             console.error('add folder ', { error })
         })
+        .finally(alert("Folder Added!") )
 
         
     }
