@@ -9,13 +9,16 @@ import PropTypes from 'prop-types';
 
 class Note extends React.Component{
   static defaultProps ={
-    onDeleteNote: () => {},
+    onDeleteNote: () => {
+      this.props.history.goBack('/')
+    },
   }
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
     const noteId = this.props.id
+
 
     fetch(`https://remembrance-parliament-57350.herokuapp.com/api/notes/${noteId}`, {
       method: 'DELETE',
@@ -26,7 +29,7 @@ class Note extends React.Component{
     .then(response => {
       if(!response.ok)
         return response.json().then(e => Promise.reject(e))
-      return response.json()
+      return response
     })
     .then(() => {
       this.context.deleteNote(noteId)
@@ -43,6 +46,9 @@ class Note extends React.Component{
   render() {
     const { name, id, modified } = this.props
     const date = new Date(modified).toDateString();
+
+    console.log(this.props)
+
     return (
         <div className = 'Note'>
             <h2 className='Note-title'>
@@ -55,7 +61,7 @@ class Note extends React.Component{
         <div className='Note__dates'>
           <div className='Note__dates-modified'>
             Modified: {' '}
-                {date}
+                {modified}
                 <br/>
                 <button className='Note-delete'
                     type='button'

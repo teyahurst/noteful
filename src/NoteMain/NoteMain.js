@@ -5,6 +5,7 @@ import './NoteMain.css';
 import { findNote } from '../varhelp';
 import PropTypes from 'prop-types';
 
+
 class NoteMain extends React.Component{
     static defaultProps = {
         match: {
@@ -30,7 +31,7 @@ class NoteMain extends React.Component{
             <Note 
                 id={note.id}
                 name={note.note_name}
-                modified={note.modified}
+                modified={note.modified_date}
                 onDeleteNote={this.handleDeleteNote}
                 
             />
